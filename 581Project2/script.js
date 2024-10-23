@@ -24,13 +24,16 @@ function dropItem(e) {
   clonedItem.classList.remove('drag-item'); // remove drag capabilities after adding
   glass.appendChild(clonedItem); // Add the dragged item to the glass
 
-  //TODO
+  //TODO shaking handling 
   //after item is added add function to handle state 
   alert('Shake your phone to mix the drink!');
 }
 
 
-//TODO 
+//TODO shaking function 
 //gyroscope data handiling for intinsity identifier 
 
 
+
+//TODO Reset function 
+//pour out the drink

@@ -9,6 +9,11 @@ body {
   height: 100vh;
   flex-direction: row;
   overflow: hidden;
+
+  
+  background-image: url('\assets\Bakcgroundimg.jpg');
+  background-size: cover;
+
 }
 
 /* Container for the whole screen layout */
@@ -19,6 +24,8 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
+
+
 }
 
 /* Center the glass cup */
@@ -28,14 +35,19 @@ body {
   border-style: dotted;
   max-width: fit-content;
   margin-inline: auto;
-  width: 20vh;
-  height: 20vh;
+  display: flex;
+  width: 40vh;
+  
+
 }
 .glass-cup img{
-  width: 20vh;
-  height: 20vh;
-  object-fit: contain;
-  
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+
 }
 
 /* Bottom area for the drag items */
@@ -45,8 +57,10 @@ body {
   width: 100%;
   position: absolute;
   bottom: 20px;
-  padding: 10px;
+  padding: 1rem; 
 }
+
+
 
 /* Style for each draggable item */
 .drag-item {
