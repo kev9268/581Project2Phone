@@ -1,34 +1,36 @@
-/*
-  This is your site JavaScript code - you can add interactivity!
-*/
+const glass = document.getElementById('glass');
+const dragItems = document.querySelectorAll('.drag-item');
 
-// Print a message in the browser's dev tools console each time the page loads
-// Use your menus or right-click / control-click and choose "Inspect" > "Console"
-console.log("Hello 🌎");
+dragItems.forEach(item => {
+  item.addEventListener('dragstart', dragStart);
+});
 
-/* 
-Make the "Click me!" button move when the visitor clicks it:
-- First add the button to the page by following the steps in the TODO 🚧
-*/
-const btn = document.querySelector("button"); // Get the button from the page
-if (btn) { // Detect clicks on the button
-  btn.onclick = function () {
-    // The 'dipped' class in style.css changes the appearance on click
-    btn.classList.toggle("dipped");
-  };
+glass.addEventListener('dragover', dragOver);
+glass.addEventListener('drop', dropItem);
+
+function dragStart(e) {
+  e.dataTransfer.setData('text', e.target.id);
+}
+
+function dragOver(e) {
+  e.preventDefault();
+}
+
+function dropItem(e) {
+  e.preventDefault();
+  const itemId = e.dataTransfer.getData('text');
+  const item = document.getElementById(itemId);
+  const clonedItem = item.cloneNode(true);
+  clonedItem.classList.remove('drag-item'); // remove drag capabilities after adding
+  glass.appendChild(clonedItem); // Add the dragged item to the glass
+
+  //TODO
+  //after item is added add function to handle state 
+  alert('Shake your phone to mix the drink!');
 }
 
 
-// ----- GLITCH STARTER PROJECT HELPER CODE -----
+//TODO 
+//gyroscope data handiling for intinsity identifier 
 
-// Open file when the link in the preview is clicked
-let goto = (file, line) => {
-  window.parent.postMessage(
-    { type: "glitch/go-to-line", payload: { filePath: file, line: line } }, "*"
-  );
-};
-// Get the file opening button from its class name
-const filer = document.querySelectorAll(".fileopener");
-filer.forEach((f) => {
-  f.onclick = () => { goto(f.dataset.file, f.dataset.line); };
-});
+
