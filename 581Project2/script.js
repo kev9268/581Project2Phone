@@ -26,29 +26,45 @@ function dropItem(e) {
   const clonedItem = item.cloneNode(true);
   clonedItem.classList.add('merging'); // Add the merging class for animation
   
-  // Get the position of the glass (mixer) to position the item correctly
+  // Get the position of the soda to position the item correctly
   const glassRect = glass.getBoundingClientRect();
   const itemRect = item.getBoundingClientRect();
   
-  // Set absolute position of the cloned item based on glass position
-  clonedItem.style.position = 'absolute';
+  // Set absolute position of the cloned on top of the soda 
   clonedItem.style.top = `${glassRect.top - itemRect.height / 2}px`;
   
-  // Append the cloned item to the body so it overlays the glass cup
+  // Add the cloned item to the body so it overlays the soda
   document.body.appendChild(clonedItem);
   
   // Remove the cloned item after the animation completes
   setTimeout(() => {
     clonedItem.remove();
+    notifyShake();
   }, 1000); // 1 second matches the animation duration
+  
+
+
 }
 
-
-
 //TODO shaking function 
-//gyroscope data handiling for intinsity identifier 
+//gyroscope data handiling for intinsity identifier (this can be another separate func )
+function shakeItem(){
 
-
+}
 
 //TODO Reset function 
 //pour out the drink
+
+
+
+//shake text functions --------------------
+const shakeText =  document.getElementById("shake_notification") 
+function notifyShake(){
+shakeText.classList.add('open');
+}
+//remove once user starts shaking phone
+function removeShake(){
+  shakeText.classList.remove('open');
+
+}
+//------------------------------------------
