@@ -47,6 +47,7 @@ body {
   align-items: center;
   padding-left: 2.5%;
   padding-right: 2.5%;
+  
 
 }
 
@@ -60,24 +61,46 @@ body {
   padding: 1rem; 
 }
 
-
-
 /* Style for each draggable item */
 .drag-item {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
   cursor: grab;
   margin: 0 10px; /* Spacing between icons */
-  border: 1px solid #ccc;
+  border: 2px double  #c0338f;
+  background: rgba(245, 242, 242, 0.353);/* Green background with 30% opacity */
   transition: transform 0.2s;
 }
 
 .drag-item:hover {
   transform: scale(1.1);
 }
+
+/* Define the animation for shrinking, fading, and moving down */
+@keyframes mergeIntoDrink {
+  0% {
+    transform: translateY(0) scale(1); /* Start at original position and size */
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    transform: translateY(50px) scale(2); /* Move down and enlarge */
+    opacity: 0.8; /* Slightly faded */
+  }
+  100% {
+    transform: translateY(100px) scale(0); /* Move further down and shrink to nothing */
+    opacity: 0; /* Fully transparent */
+  }
+}
+
+/* Class to trigger the merging animation */
+.merging {
+  position: absolute;
+  animation: mergeIntoDrink 1s forwards; /* Animation duration */
+}
+
+
