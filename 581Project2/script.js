@@ -1,6 +1,7 @@
 const mixCup = document.getElementById('mixCup');
 const dragItems = document.querySelectorAll('.drag-item');
 
+//once item is clicked 
 dragItems.forEach(item => {
   item.addEventListener('dragstart', dragStart);
 });
@@ -10,41 +11,42 @@ mixCup.addEventListener('drop', dropItem);
 
 function dragStart(e) {
   const itemId = e.currentTarget.id;  // Use e.currentTarget.id to get the div's ID
-  console.log(`Dragging item with ID: ${itemId}`);
-  e.dataTransfer.setData('text/plain', itemId);
+  console.log(`Dragging item with ID: ${itemId}`);  //debugging
+  e.dataTransfer.setData('text', itemId);
 }
 
 function dragOver(e) {
   e.preventDefault();
-  console.log('Dragging over the mixCup.');
+  console.log('Dragging over the mixCup.'); //debug
 }
 
 function dropItem(e) {
   e.preventDefault();
-  const itemId = e.dataTransfer.getData('text/plain');
-  console.log(`Dropping item with ID: ${itemId}`);
+  const itemId = e.dataTransfer.getData('text'); //get id of dragged item
+  console.log(`Dropping item with ID: ${itemId}`); // debug
   
-  const item = document.getElementById(itemId);
+  const item = document.getElementById(itemId); //store the item id
   
+  //debugging
   if (!item) {
     console.error(`Item with ID ${itemId} not found.`);
     return;
   }
   
   // Continue with cloning and positioning the item
-  const clonedItem = item.cloneNode(true);
+  const clonedItem = item.cloneNode(true);  //create clone 
   clonedItem.classList.add('merging'); // Add the merging class for animation
   
-  const mixCupRect = mixCup.getBoundingClientRect();
-  const itemRect = item.getBoundingClientRect();
+  const mixCupRect = mixCup.getBoundingClientRect();  //get properties the mixcup 
+  const itemRect = item.getBoundingClientRect();  //get properties of item 
   
   clonedItem.style.position = 'absolute';
-  clonedItem.style.top = `${mixCupRect.top - itemRect.height / 2}px`;
+  clonedItem.style.top = `${mixCupRect.top - itemRect.height / 2}px`; //align item above the mixup 
   
-  document.body.appendChild(clonedItem);
+  document.body.appendChild(clonedItem);  //add the cloned item on screen for animation 
   
   setTimeout(() => {
-    clonedItem.remove();
+    clonedItem.remove();  //remove the cloned item 
   }, 1000);
 }
 
