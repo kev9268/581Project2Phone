@@ -24,7 +24,7 @@ function dropItem(e) {
   
   // Clone the item to keep it in its original position too
   const clonedItem = item.cloneNode(true);
-  clonedItem.classList.add('merging'); // Add the merging class for animation
+  clonedItem.classList.add('extreme'); // Add the merging class for animation
   
   // Get the position of the soda to position the item correctly
   const glassRect = glass.getBoundingClientRect();
@@ -39,10 +39,9 @@ function dropItem(e) {
   // Remove the cloned item after the animation completes
   setTimeout(() => {
     clonedItem.remove();
-    notifyShake();
+    
   }, 1000); // 1 second matches the animation duration
-  
-
+  shakeMixer('moderate')
 
 }
 
@@ -68,3 +67,19 @@ function removeShake(){
 
 }
 //------------------------------------------
+//function to trigger shake animation based on intensity 
+function shakeMixer(intensity) {
+  const glass = document.getElementById('glass');
+  
+  // Remove any existing shake class
+  glass.classList.remove('shake-low', 'shake-moderate', 'shake-extreme');
+  
+  // Apply the appropriate shake class based on intensity
+  if (intensity === 'low') {
+    glass.classList.add('shake-low');
+  } else if (intensity === 'moderate') {
+    glass.classList.add('shake-moderate');
+  } else if (intensity === 'extreme') {
+    glass.classList.add('shake-extreme');
+  }
+}

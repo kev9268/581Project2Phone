@@ -81,6 +81,12 @@ body {
   transform: scale(1.1);
 }
 
+.drag-item img{
+  width: 70px;
+
+  margin-top: 30px;
+}
+
 /* Define the animation for shrinking, fading, and moving down */
 @keyframes mergeIntoDrink {
   0% {
