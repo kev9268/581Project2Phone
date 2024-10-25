@@ -78,12 +78,11 @@ body {
 }
 
 .drag-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.35);
 }
 
 .drag-item img{
-  width: 70px;
-
+  width: 100%;
   margin-top: 30px;
 }
 
@@ -98,7 +97,7 @@ body {
     opacity: 0.8; /* Slightly faded */
   }
   100% {
-    transform: translateY(100px) scale(0); /* Move further down and shrink to nothing */
+    transform: translateY(35vh) scale(0); /* Move further down and shrink to nothing */
     opacity: 0; /* Fully transparent */
   }
 }

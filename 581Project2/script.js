@@ -1,60 +1,59 @@
-const glass = document.getElementById('glass');
+const mixCup = document.getElementById('mixCup');
 const dragItems = document.querySelectorAll('.drag-item');
 
 dragItems.forEach(item => {
   item.addEventListener('dragstart', dragStart);
 });
 
-glass.addEventListener('dragover', dragOver);
-glass.addEventListener('drop', dropItem);
+mixCup.addEventListener('dragover', dragOver);
+mixCup.addEventListener('drop', dropItem);
 
 function dragStart(e) {
-  e.dataTransfer.setData('text', e.target.id);
+  const itemId = e.currentTarget.id;  // Use e.currentTarget.id to get the div's ID
+  console.log(`Dragging item with ID: ${itemId}`);
+  e.dataTransfer.setData('text/plain', itemId);
 }
 
 function dragOver(e) {
   e.preventDefault();
+  console.log('Dragging over the mixCup.');
 }
 
-//function to handle item drop into drink
 function dropItem(e) {
   e.preventDefault();
-  const itemId = e.dataTransfer.getData('text');
+  const itemId = e.dataTransfer.getData('text/plain');
+  console.log(`Dropping item with ID: ${itemId}`);
+  
   const item = document.getElementById(itemId);
   
-  // Clone the item to keep it in its original position too
-  const clonedItem = item.cloneNode(true);
-  clonedItem.classList.add('extreme'); // Add the merging class for animation
+  if (!item) {
+    console.error(`Item with ID ${itemId} not found.`);
+    return;
+  }
   
-  // Get the position of the soda to position the item correctly
-  const glassRect = glass.getBoundingClientRect();
+  // Continue with cloning and positioning the item
+  const clonedItem = item.cloneNode(true);
+  clonedItem.classList.add('merging'); // Add the merging class for animation
+  
+  const mixCupRect = mixCup.getBoundingClientRect();
   const itemRect = item.getBoundingClientRect();
   
-  // Set absolute position of the cloned on top of the soda 
-  clonedItem.style.top = `${glassRect.top - itemRect.height / 2}px`;
+  clonedItem.style.position = 'absolute';
+  clonedItem.style.top = `${mixCupRect.top - itemRect.height / 2}px`;
   
-  // Add the cloned item to the body so it overlays the soda
   document.body.appendChild(clonedItem);
   
-  // Remove the cloned item after the animation completes
   setTimeout(() => {
     clonedItem.remove();
-    
-  }, 1000); // 1 second matches the animation duration
-  shakeMixer('moderate')
-
+  }, 1000);
 }
+
 
 //TODO shaking function 
 //gyroscope data handiling for intinsity identifier (this can be another separate func )
 function shakeItem(){
 
 }
-
-//TODO Reset function 
-//pour out the drink
-
-
 
 //shake text functions --------------------
 const shakeText =  document.getElementById("shake_notification") 
@@ -69,17 +68,17 @@ function removeShake(){
 //------------------------------------------
 //function to trigger shake animation based on intensity 
 function shakeMixer(intensity) {
-  const glass = document.getElementById('glass');
+  const mixCup = document.getElementById('mixCup');
   
   // Remove any existing shake class
-  glass.classList.remove('shake-low', 'shake-moderate', 'shake-extreme');
+  mixCup.classList.remove('shake-low', 'shake-moderate', 'shake-extreme');
   
   // Apply the appropriate shake class based on intensity
   if (intensity === 'low') {
-    glass.classList.add('shake-low');
+    mixCup.classList.add('shake-low');
   } else if (intensity === 'moderate') {
-    glass.classList.add('shake-moderate');
+    mixCup.classList.add('shake-moderate');
   } else if (intensity === 'extreme') {
-    glass.classList.add('shake-extreme');
+    mixCup.classList.add('shake-extreme');
   }
 }
