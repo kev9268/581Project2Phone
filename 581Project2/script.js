@@ -1,3 +1,7 @@
+const redDice = 'R';
+const blueDice = 'B';
+const greenDice = 'G'
+
 const mixCup = document.getElementById('mixCup');
 const dragItems = document.querySelectorAll('.drag-item');
 
@@ -21,6 +25,7 @@ function dragOver(e) {
 }
 
 function dropItem(e) {
+  notifyShake();
   e.preventDefault();
   const itemId = e.dataTransfer.getData('text'); //get id of dragged item
   console.log(`Dropping item with ID: ${itemId}`); // debug
@@ -40,7 +45,7 @@ function dropItem(e) {
   const mixCupRect = mixCup.getBoundingClientRect();  //get properties the mixcup 
   const itemRect = item.getBoundingClientRect();  //get properties of item 
   
-  clonedItem.style.position = 'absolute';
+  clonedItem.style.position = 'absolute'; //set cloned item absolute 
   clonedItem.style.top = `${mixCupRect.top - itemRect.height / 2}px`; //align item above the mixup 
   
   document.body.appendChild(clonedItem);  //add the cloned item on screen for animation 
@@ -60,7 +65,12 @@ function shakeItem(){
 //shake text functions --------------------
 const shakeText =  document.getElementById("shake_notification") 
 function notifyShake(){
+
+setTimeout( () => {
 shakeText.classList.add('open');
+
+}, 1000);
+
 }
 //remove once user starts shaking phone
 function removeShake(){
