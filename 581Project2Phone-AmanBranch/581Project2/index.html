@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://glitch.com/favicon.ico" />
+  <title>shaken !stirred</title>
+
+  <!-- The website stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- The website JavaScript file -->
+  <script src="script.js" defer></script>
+
+  <style>
+      .dice {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 8px;
+        position: relative;
+        border: 2px solid black;
+      }
+
+      /* Dice colors */
+      .red-dice { background-color: red; }
+      .blue-dice { background-color: blue; }
+      .green-dice { background-color: green; }
+
+      /* Dot style */
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      /* Dot positions for each number */
+      .one .dot { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+      .two .dot:nth-child(1) { top: 25%; left: 25%; }
+      .two .dot:nth-child(2) { top: 75%; left: 75%; }
+
+      .three .dot:nth-child(1) { top: 25%; left: 25%; }
+      .three .dot:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .three .dot:nth-child(3) { top: 75%; left: 75%; }
+
+      .four .dot:nth-child(1) { top: 25%; left: 25%; }
+      .four .dot:nth-child(2) { top: 25%; left: 75%; }
+      .four .dot:nth-child(3) { top: 75%; left: 25%; }
+      .four .dot:nth-child(4) { top: 75%; left: 75%; }
+
+      .five .dot:nth-child(1) { top: 25%; left: 25%; }
+      .five .dot:nth-child(2) { top: 25%; left: 75%; }
+      .five .dot:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .five .dot:nth-child(4) { top: 75%; left: 25%; }
+      .five .dot:nth-child(5) { top: 75%; left: 75%; }
+
+      .six .dot:nth-child(1) { top: 25%; left: 25%; }
+      .six .dot:nth-child(2) { top: 25%; left: 50%; transform: translateX(-50%); }
+      .six .dot:nth-child(3) { top: 25%; left: 75%; }
+      .six .dot:nth-child(4) { top: 75%; left: 25%; }
+      .six .dot:nth-child(5) { top: 75%; left: 50%; transform: translateX(-50%); }
+      .six .dot:nth-child(6) { top: 75%; left: 75%; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Glass cup in the center -->
+  <div class="shake_notification" id="shake_notification">
+    <p>shake</p>
+  </div>
+
+  <div class="glass-cup" id="glass">
+    <img src="assets\\A2_ASSETS_241024_133112_2-removebg-preview.png" alt="mixing cup">
+  </div>
+
+  <!-- Dice represented with colors and dots -->
+  <div class="drag-items">
+    <div class="dice red-dice one" id="item1">
+      <div class="dot"></div>
+    </div>
+    <div class="dice blue-dice two" id="item2">
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="dice green-dice three" id="item3">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
