@@ -1,6 +1,8 @@
 const redDice = 'R';
 const blueDice = 'B';
-const greenDice = 'G'
+const greenDice = 'G';
+
+
 
 const mixCup = document.getElementById('mixCup');
 const dragItems = document.querySelectorAll('.drag-item');
@@ -52,6 +54,7 @@ function dropItem(e) {
   
   setTimeout(() => {
     clonedItem.remove();  //remove the cloned item 
+    shakeMixer('moderate'); //this funtion should only be called when user start to shake, added this for testing
   }, 1000);
 }
 
@@ -64,14 +67,13 @@ function shakeItem(){
 
 //shake text functions --------------------
 const shakeText =  document.getElementById("shake_notification") 
+//notification to shake
 function notifyShake(){
-
 setTimeout( () => {
 shakeText.classList.add('open');
-
 }, 1000);
-
 }
+
 //remove once user starts shaking phone
 function removeShake(){
   shakeText.classList.remove('open');
