@@ -1,72 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- 
-      This is an HTML comment
-      You can write text in a comment and the content won't be visible in the page
-    -->
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>581 button demo</title>
     <link rel="icon" href="https://glitch.com/favicon.ico" />
-
-    <!--
-      This is the page head - it contains info the browser uses
-      Like the title, which appears on the browser tab but not inside the page
-      Further down you'll see the content that displays in the page
-    -->
-    <title>Hello World!</title>
-
-    <!-- The website stylesheet -->
     <link rel="stylesheet" href="/style.css" />
-
-    <!-- The website JavaScript file -->
     <script src="/script.js" defer></script>
   </head>
-  <body>
-    <!--
-      The body includes the content you see in the page
-      Each element is defined using tags, like this <div></div>
-      The attributes like class="wrapper" let us style elements in the CSS
-    -->
-    <div class="wrapper">
-      <div class="content" role="main">
-        <h1 class="title">Hello World!</h1>
-        <img
-          src="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016"
-          class="illustration"
-          alt="Editor illustration"
-          title="Click the image!"
-        />
-        <div class="instructions">
-          <h2>Using this project</h2>
-          <p>
-            This is the Glitch <strong>Hello Website</strong> project. You can
-            use it to build your own site. Check out the code in the editor and open
-            the <span class="fileopener" data-file="TODO.md" data-line="0"
-              >TODO</span> for next steps!
-          </p>
-          <!--  🚧 TODO: ADD BUTTON HERE -->
 
-          <!-- Once you've added the button from TODO.md, click it in the page -->
-          <!-- Check out the function in script.js to see how it works -->
-        </div>
-      </div>
+  <body>
+    
+
+    
+    <div class="content" role="main">
+<!--       <h1 id="text" class="title">A Button</h1> -->
+      
+      <h2 style="margin-top:0.75rem;">Orientation</h4>
+      <ul>
+        <li>X-axis (β): <span id="Orientation_b">0</span><span>°</span></li>
+        <li>Y-axis (γ): <span id="Orientation_g">0</span><span>°</span></li>
+        <li>Z-axis (α): <span id="Orientation_a">0</span><span>°</span></li>
+      </ul>
+
+      <h2>Vars</h4>
+      <ul>
+        <li>Average: <span id="AverageAccel">0</span><span> m/s<sup>2</sup></span></li>
+        <li>Count: <span id="EventCount">0</span><span> m/s<sup>2</sup></span></li>
+        <li>Total: <span id="TotalAccel">0</span><span> m/s<sup>2</sup></span></li>
+        <li>Class: <span id="Classify">0</span><span> ms</span></li>
+      </ul>
+
+      <h2>Accelerometer</h4>
+
+      <ul>
+        <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
+        <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
+        <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
+      </ul>
+
+      <h2>Gyroscope</h4>
+      <ul>
+        <li>Check Touch: <span id="touch">0</span><span></span></li>
+        <li>Y-axis: <span id="Gyroscope_y">0</span><span>°/s</span></li>
+        <li>Z-axis: <span id="Gyroscope_z">0</span><span>°/s</span></li>
+      </ul>
+      
+      
     </div>
-    <!-- The footer holds our remix button — you can keep or delete it ✂ -->
-    <footer class="footer">
-      <div class="links"></div>
-      <a
-        class="btn--remix"
-        target="_top"
-        href="https://glitch.com/edit/#!/remix/glitch-hello-website"
-      >
-        <img
-          src="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FLogo_Color.svg?v=1618199565140"
-          alt=""
-        />
-        Remix on Glitch
-      </a>
-    </footer>
   </body>
 </html>
