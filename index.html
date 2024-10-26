@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 
+      This is an HTML comment
+      You can write text in a comment and the content won't be visible in the page
+    -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>shaken !stirred</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- The website JavaScript file -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <!-- Glass cup in the center -->
+
+      <div class="shake_notification" id="shake_notification">
+        <p>shake</p>
+      </div>
+
+      <div class="mix-cup" id="mixCup">
+        <!-- need to find a better glass png -->
+        <img src ="assets/Notes_241025_144346_4-removebg-preview.png" alt="mixing cup">
+      </div>
+    
+      <!-- items will be changed later -->
+        <div class="drag-items">
+          <div class="drag-item" draggable="true" id="item1">
+            <img src="assets\Notes_241025_144346_1-removebg-preview.png" alt="red dice">
+          </div>
+          <div class="drag-item" draggable="true" id="item2">
+            <img src="assets\Notes_241025_144346_2-removebg-preview.png" alt="blue dice">
+          </div>
+          <div class="drag-item" draggable="true" id="item3">
+            <img src="assets\Notes_241025_144346_3-removebg-preview.png" alt="green dice">
+          </div>
+          <ul>
+            <li>Check Touch: <span id="touch"></span><span></span></li>
+            <li>Item: <span id="item_id"></span><span></span></li>
+          </ul>
+        </div>        
+
+    </div>
+    
+  </body>
+</html>
