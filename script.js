@@ -5,7 +5,7 @@ const greenDice = 'G';
 let digit = ''; 
 let curr_Item = 'item0';
 // Define the correct PIN sequence
-const correctSequence = ['R', 'B', 'G'];
+const correctSequence = ['RRlow', 'Bmoderate', 'Gextreme'];
 let userSequence = []; // Store user's current sequence
 let shakeEnabled = true; // Control variable to manage shaking
 
@@ -126,7 +126,6 @@ function dropItem(e) {
 
 // Function to record each action in the sequence
 function recordAction(action) {
-  userSequence.push(action);
   digit = digit + action;
   console.log('Digit is ' + digit );
   console.log(`Action recorded: ${action}, Current sequence: ${userSequence}`);
@@ -193,13 +192,16 @@ let classify = 'slow';
 
 document.getElementById('touch').innerHTML = check_touch
 
-window.addEventListener('touchend', function(event) {
+'mixing cup'.addEventListener('touchend', function(event) { // button that checks end of shake for touching cup
+  event.defaultPrevent();
   check_touch = false
   // document.getElementById('touch').innerHTML = check_touch
   average_accel = total_accel / event_count
   // document.getElementById('AverageAccel').innerHTML = average_accel;
   // document.getElementById('TotalAccel').innerHTML = total_accel;
   // document.getElementById('EventCount').innerHTML = event_count;
+
+  // classify low moderate extreme shake level
   if (average_accel<=20) {
     classify = "low";
     
@@ -208,14 +210,18 @@ window.addEventListener('touchend', function(event) {
   } else {
     classify = "extreme";
   }
+  digit = digit + classify // update the pin according to shake level
+  userSequence.push(digit); // pushing sequence
   // document.getElementById('Classify').innerHTML = classify;
+  //resetting values for next input
   average_accel = 0;
   event_count = 0;
   total_accel = 0;
   
 });
 
-window.addEventListener('touchstart', function(event) {
+'mixing cup'.addEventListener('touchstart', function(event) { // change this to the dice cup
+  event.defaultPrevent();
   check_touch = true
   // document.getElementById('touch').innerHTML = check_touch
 });
