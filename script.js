@@ -5,7 +5,7 @@ const greenDice = 'G';
 let digit = ''; 
 let curr_Item = 'item0';
 // Define the correct PIN sequence
-const correctSequence = ['RRlow', 'Bmoderate', 'Gextreme'];
+const correctSequence = ['RRlow', 'Bmoderate', 'Glow'];
 let userSequence = []; // Store user's current sequence
 let shakeEnabled = true; // Control variable to manage shaking
 
@@ -39,8 +39,10 @@ function clickStart(e){ // copied logic for drag but changed the event handler
 function clickEnd(e){ // copied logic for drag but changed the event handler
   check_touch = false  
   document.getElementById('touch').innerHTML = JSON.stringify(e);
-  const itemId = JSON.stringify(e);
-  const item = document.getElementById(itemId);
+  itemId = JSON.stringify(e); 
+  recordAction(itemId); //putting which dice into dice sequence, this is done because the if statements for itemId do not work
+
+  const item = document.getElementById(itemId); 
   
   if (!item) {
     console.error(`Item with ID ${itemId} not found.`);
@@ -129,7 +131,7 @@ function recordAction(action) {
   digit = digit + action;
   console.log('Digit is ' + digit );
   console.log(`Action recorded: ${action}, Current sequence: ${userSequence}`);
-  checkSequence();
+  
 }
 
 // Function to check if user's input matches the correct PIN sequence
@@ -212,11 +214,14 @@ document.getElementById('touch').innerHTML = check_touch
   }
   digit = digit + classify // update the pin according to shake level
   userSequence.push(digit); // pushing sequence
+  checkSequence();
   // document.getElementById('Classify').innerHTML = classify;
-  //resetting values for next input
+
+  //resetting sensor values for next input
   average_accel = 0;
   event_count = 0;
   total_accel = 0;
+  digit = '';
   
 });
 
@@ -252,10 +257,12 @@ function handleMotion(event) {
   }
 }
 
-function reset_input(){
+function reset_input(){ // reset input when phone is tilted
   average_accel = 0;
   event_count = 0;
   total_accel = 0;
+  userSequence = []; 
+  digit = '';
   // document.getElementById('AverageAccel').innerHTML = average_accel;
   // document.getElementById('TotalAccel').innerHTML = total_accel;
   // document.getElementById('EventCount').innerHTML = event_count;
