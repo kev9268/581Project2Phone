@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://glitch.com/favicon.ico" />
+  <title>Shaken! Stirred!</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<div class="container">
+  <!-- Button to request sensor access -->
+  <button id="enableSensorsButton">Enable Sensors</button>
+
+  <div class="shake_notification" id="shake_notification">
+    <p>Shake</p>
+  </div>
+
+  <div class="mix-cup" id="mixCup">
+    <img src="assets/Notes_241025_144346_4-removebg-preview.png" alt="mixing cup">
+  </div>
+
+  <div class="drag-items">
+    <div class="drag-item" draggable="true" id="item1">
+      <img src="assets/Notes_241025_144346_1-removebg-preview.png" alt="red dice">
+    </div>
+    <div class="drag-item" draggable="true" id="item2">
+      <img src="assets/Notes_241025_144346_2-removebg-preview.png" alt="blue dice">
+    </div>
+    <div class="drag-item" draggable="true" id="item3">
+      <img src="assets/Notes_241025_144346_3-removebg-preview.png" alt="green dice">
+    </div>
+  </div>
+
+  <ul>
+    <li>Check Touch: <span id="touch"></span></li>
+    <li>Item: <span id="item_id"></span></li>
+  </ul>
+</div>
+</body>
+</html>
