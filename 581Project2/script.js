@@ -54,7 +54,6 @@ function dropItem(e) {
   
   setTimeout(() => {
     clonedItem.remove();  //remove the cloned item 
-    shakeMixer('moderate'); //this funtion should only be called when user start to shake, added this for testing
   }, 1000);
 }
 
@@ -115,11 +114,13 @@ window.addEventListener('touchend', function(event) {
   document.getElementById('EventCount').innerHTML = event_count;
   if (average_accel<=20) {
     classify = 0;
-    
-  } else if (average_accel<30){
+    shakeMixer('low');
+  } else if (average_accel>=30){
     classify = 1;
-  } else {
+    shakeMixer('moderate');
+  } else if(average_accel>=60){
     classify = 2;
+    shakeMixer('extreme');
   }
   document.getElementById('Classify').innerHTML = classify;
   average_accel = 0;
