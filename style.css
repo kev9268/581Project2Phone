@@ -9,11 +9,22 @@ body {
   flex-direction: row;
   overflow: hidden;
 
-  background-image: url('assets/backgroundimg.jpg');
+  background-image: url('https://cdn.glitch.global/a47ecec9-f00e-403c-b8f4-2681583e8ea4/backgroundimg.jpg?v=1729705104749');
   background-size: cover;
   background-position: center;
 
 
+}
+
+.invisible-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%; /* Top half of the screen */
+    background-color:transparent; /* Invisible background */
+    cursor: pointer;
+    z-index:1;
 }
 
 /* Container for the whole screen layout */
@@ -25,14 +36,14 @@ body {
   height: 100%;
   width: 100%;
 
+  padding-bottom: 190px;
 
 }
 
 /* Center the glass cup */
-.glass-cup {
+.mix-cup{
   background-size: contain;
   position: relative;
-  border-style: dotted;
   max-width: fit-content;
   margin-inline: auto;
   display: flex;
@@ -40,14 +51,13 @@ body {
   
 
 }
-.glass-cup img{
+.mix-cup img{
   width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 2.5%;
   padding-right: 2.5%;
-  
 
 }
 
@@ -109,25 +119,14 @@ body {
 }
 
 /* Keep hidden until item is added */
-.shake_notification {
+.shake_notification{
   display: none;
-  position: fixed;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Precisely center */
-  padding: 20px 40px; /* Add padding for readability */
-  color: #ffffff; /* White text */
-  background-color: rgba(0, 0, 0, 0.9); /* Black background with slight transparency */
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 10px;
-  z-index: 1000; /* Ensure it stays on top of other elements */
-}
-
-/* Display the notification when the class 'open' is added */
-.shake_notification.open {
-  display: block;
+  border-radius: 15px; /* Rounded corners */
+  text-align: center; /* Center the text inside */
+  color: #ffffff; /* White text to contrast with the bold background */
+  animation: shake_text 1s;
+  animation-iteration-count: infinite;
+  font-size: 2rem;
 }
 
 /* Display once item has been added */
@@ -204,3 +203,58 @@ body {
   animation: shakeExtreme 0.5s ease-in-out infinite;
 }
 
+
+@keyframes resetAnimation{
+  0% {top: 0px;}
+  100% {top: -150vh;}
+}
+
+.reset-Animation{
+  position: relative;
+  animation: resetAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.house-sum {
+  postion:absolute;
+  display: none ; /* Initially hidden */
+  color: #ffffff; /* White text */
+  font-size: 2rem; /* Font size */
+  opacity : 1;
+}
+
+.house-sum-open {
+/*   display: block; Show when open */
+  display: block ; /* Initially hidden */
+}
+
+.sum-class {
+
+  display: block;
+  postion: absolute;
+  left: 50vw; 
+  
+  font-family: 'Arial', sans-serif; /* A clean, modern font */
+  font-size: 24px; /* Make it large enough to be easily readable */
+  font-weight: bold;
+  color: #f5f5f5; /* A light color to contrast with a darker background */
+  background-color: rgba(1, 1, 1, 0.1); /* Dark background with 80% opacity */
+  padding: 10px 20px; /* Add some padding around the text */
+  border-radius: 8px; /* Rounded corners */
+  display: inline-block; /* Make it behave like a button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth animation for hover */
+}
+.sum-class.close {
+  display:none;
+}
+
+
+.debug_text{
+  display:none;
+  position:absolute;
+  left: 1em;
+  top: 1rem;
+  
+}

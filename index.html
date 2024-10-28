@@ -5,11 +5,9 @@
       This is an HTML comment
       You can write text in a comment and the content won't be visible in the page
     -->
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://glitch.com/favicon.ico" />
-
     <!--
       This is the page head - it contains info the browser uses
       Like the title, which appears on the browser tab but not inside the page
@@ -25,13 +23,13 @@
   </head>
 
   <body>
-
-        
-
+    
+    <canvas id="shake_space" class="invisible-button"></canvas>
+     
+    
     <!-- for testing -->
     <div class="content" role="main">
       <!--       <h1 id="text" class="title">A Button</h1> -->
-            
           <div class="debug_text">
 
             <h2 style="margin-top:0.75rem;">Orientation</h2>
@@ -57,43 +55,55 @@
               <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
             </ul>
       
-            <h2>Gyroscope</h2>
+            <h2>Gyroscope</h2> 
             <ul>
               <li>Check Touch: <span id="touch">0</span><span></span></li>
-              <li>Y-axis: <span id="Gyroscope_y">0</span><span>°/s</span></li>
-              <li>Z-axis: <span id="Gyroscope_z">0</span><span>°/s</span></li>
+              <li>Shake: <span id="shake_touch"></span><span></span></li>
+              <li>Dice: <span id="dice">0</span><span></span></li>
             </ul>
 
           </div>
-
-          
-    </div>
-
-
+            
+    
     <div class="container">
       <!-- Glass cup in the center -->
-
+    
+      <p class="sum-class">Sum: <span id="sum" >0</span><span></span></p>
+      <p class="house-sum" id="house">House Sum: <span id="house_sum">0</span></p>
+      
+      
+      <div class="other-notification">
+        
+        
+      </div>
+      
       <div class="shake_notification" id="shake_notification">
         <p>shake</p>
       </div>
+      
+      
 
       <div class="mix-cup" id="mixCup">
         <!-- need to find a better glass png -->
-        <img src ="assets/Notes_241025_144346_4-removebg-preview.png" alt="mixing cup">
+        <img src ="https://cdn.glitch.global/a47ecec9-f00e-403c-b8f4-2681583e8ea4/Notes_241025_144346_4-removebg-preview.png?v=1729912500543" alt="mixing cup">
       </div>
+    
       <!-- items will be changed later -->
         <div class="drag-items">
+         
           <div class="drag-item" draggable="true" id="item1">
-            <img src="assets\Notes_241025_144346_1-removebg-preview.png" alt="red dice">
+            <img src="https://cdn.glitch.global/a47ecec9-f00e-403c-b8f4-2681583e8ea4/Notes_241025_144346_1-removebg-preview.png?v=1729912490476" alt="red dice">
           </div>
           <div class="drag-item" draggable="true" id="item2">
-            <img src="assets\Notes_241025_144346_2-removebg-preview.png" alt="blue dice">
+            <img src="https://cdn.glitch.global/a47ecec9-f00e-403c-b8f4-2681583e8ea4/Notes_241025_144346_2-removebg-preview.png?v=1729912493247" alt="blue dice">
           </div>
           <div class="drag-item" draggable="true" id="item3">
-            <img src="assets\Notes_241025_144346_3-removebg-preview.png" alt="green dice">
+            <img src="https://cdn.glitch.global/a47ecec9-f00e-403c-b8f4-2681583e8ea4/Notes_241025_144346_3-removebg-preview.png?v=1729912495920" alt="green dice">
           </div>
         </div>        
-
+    </div>
+      
     </div>
   </body>
+  <script src="script.js" defer></script>
 </html>
