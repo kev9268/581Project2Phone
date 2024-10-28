@@ -20,6 +20,9 @@ dragItems.forEach(item => {
   item.addEventListener('dragstart', dragStart);
   item.addEventListener('touchstart',clickStart);
   item.addEventListener('touchend',clickEnd);
+  //item.addEventListener('mousedown', clickStart);
+  //item.addEventListener('mouseup', clickEnd);
+  
 });
 
 mixCup.addEventListener('dragover', dragOver);
@@ -29,17 +32,15 @@ mixCup.addEventListener('drop', dropItem);
 function clickStart(e){ // copied logic for drag but changed the event handler
   e.preventDefault();
   shakeEnabled = true;
-  const itemId = e.currentTarget.id;
+  itemId = e.currentTarget.id;
   console.log(`Dragging item with ID: ${itemId}`);
   check_touch = true  
   document.getElementById('touch').innerHTML = check_touch
-  e.dataTransfer.setData('text', itemId);
 }
 
 function clickEnd(e){ // copied logic for drag but changed the event handler
   check_touch = false  
-  document.getElementById('touch').innerHTML = JSON.stringify(e);
-  itemId = JSON.stringify(e); 
+  document.getElementById('touch').innerHTML = check_touch;
   recordAction(itemId); //putting which dice into dice sequence, this is done because the if statements for itemId do not work
 
   const item = document.getElementById(itemId); 
@@ -65,6 +66,7 @@ function clickEnd(e){ // copied logic for drag but changed the event handler
   const mixCupRect = mixCup.getBoundingClientRect();
   const itemRect = item.getBoundingClientRect();
   clonedItem.style.position = 'absolute';
+  clonedItem.style.left = `${mixCupRect.left + mixCupRect.width / 2 - itemRect.width / 2}px`;
   clonedItem.style.top = `${mixCupRect.top - itemRect.height / 2}px`;
   document.body.appendChild(clonedItem);
 }
@@ -85,7 +87,10 @@ function dragOver(e) {
   e.preventDefault();
   
   console.log('Dragging over the mixCup.');
+
 }
+
+
 
 // Function to handle item drop into mixCup
 function dropItem(e) {
@@ -121,7 +126,6 @@ function dropItem(e) {
     clonedItem.remove();
     // Only call shake if shaking is enabled
     if (shakeEnabled) {
-      shakeMixer('moderate'); // Call shake animation as a test
     }
   }, 1000);
 }
@@ -133,6 +137,8 @@ function recordAction(action) {
   console.log(`Action recorded: ${action}, Current sequence: ${userSequence}`);
   
 }
+
+
 
 // Function to check if user's input matches the correct PIN sequence
 function checkSequence() {
@@ -293,3 +299,7 @@ window.addEventListener('devicemotion', function(event) {
 function updateDigit() {
   
 }
+
+
+
+
